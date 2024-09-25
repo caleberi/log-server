@@ -123,7 +123,6 @@ pub fn set(self: *DownloadBuffer, data: []u8, dest: []const u8, offset: i64) !vo
 
 pub fn watch(self: *DownloadBuffer, callback: CallbackHandler) !void {
     while (self.enable_watcher) {
-        std.debug.print("Sleeeping....\n", .{});
         std.time.sleep(self.cleanup_interval * std.time.ns_per_s);
         var mp_iterator = self.items.iterator();
         while (mp_iterator.next()) |entry| {
